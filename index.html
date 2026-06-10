@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Engukuku bioconverts slaughterhouse blood into protein concentrates for animal feed formulation.">
+  <link rel="icon" href="./assets/favicon.png" type="image/png">
+  <title>Engukuku BioProtein | Slaughterhouse blood bioconversion</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: #141714;
+      background: #f6f0e4;
+      font-family: "Avenir Next", Avenir, "Trebuchet MS", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      opacity: .26;
+      pointer-events: none;
+      z-index: 20;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
+      mix-blend-mode: multiply;
+    }
+    a { color: inherit; }
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+    .shell { width: min(1180px, calc(100% - 44px)); margin: 0 auto; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 18px;
+      color: #8c1d18;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 30px; height: 2px; background: currentColor; }
+    .display {
+      margin: 0;
+      font: 500 clamp(48px, 7.2vw, 108px)/.91 Georgia, "Times New Roman", serif;
+      letter-spacing: -.065em;
+    }
+    .mobile-break { display: none; }
+    .section-title {
+      margin: 0;
+      max-width: 800px;
+      font: 500 clamp(38px, 5vw, 72px)/.96 Georgia, "Times New Roman", serif;
+      letter-spacing: -.055em;
+    }
+    .section-title em, .display em { color: #8c1d18; font-weight: 500; }
+    .lede { color: rgba(20, 23, 20, .7); font-size: 18px; line-height: 1.65; }
+    .btn {
+      border: 1px solid #141714;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 50px;
+      padding: 0 21px;
+      border-radius: 100px;
+      background: #141714;
+      color: #f6f0e4;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: transform .25s, background .25s, color .25s;
+    }
+    .btn:hover { transform: translateY(-3px); background: #8c1d18; border-color: #8c1d18; }
+    .btn.outline { background: transparent; color: #141714; }
+    .btn.outline:hover { color: #f6f0e4; background: #141714; border-color: #141714; }
+    .btn .arrow { font-size: 18px; transition: transform .25s; }
+    .btn:hover .arrow { transform: translateX(4px); }
+
+    nav {
+      position: absolute;
+      z-index: 30;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 21px 0;
+      color: #f6f0e4;
+    }
+    nav .shell { display: flex; align-items: center; justify-content: space-between; }
+    .logo {
+      display: flex;
+      align-items: center;
+      color: inherit;
+      text-decoration: none;
+    }
+    .logo-mark {
+      width: 112px;
+      height: 88px;
+      display: block;
+      object-fit: contain;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a:not(.nav-cta) {
+      color: inherit;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-links a:not(.nav-cta)::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 1px;
+      margin-top: 4px;
+      background: currentColor;
+      transition: width .25s;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      padding: 12px 18px;
+      border: 1px solid rgba(246, 240, 228, .65);
+      border-radius: 100px;
+      color: inherit;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .menu-toggle { display: none; background: none; border: 0; color: inherit; }
+
+    @media (min-width: 901px) {
+      nav .shell {
+        min-height: 86px;
+      }
+      nav .nav-links {
+        padding: 13px 14px 13px 28px;
+        border: 1px solid rgba(246,240,228,.2);
+        border-radius: 100px;
+        background: rgba(20,23,20,.64);
+        box-shadow: 0 12px 35px rgba(20,23,20,.18);
+        backdrop-filter: blur(14px);
+      }
+      .nav-links a:not(.nav-cta) { text-shadow: 0 1px 8px rgba(20,23,20,.7); }
+      .nav-cta { color: #141714; border-color: #dfa12e; background: #dfa12e; }
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: #f6f0e4;
+      background: #52100e;
+    }
+    .hero-image, .hero-shade { position: absolute; inset: 0; }
+    .hero-image {
+      background: url("./assets/engukuku-material-flow.png") center/cover no-repeat;
+      transform: scale(1.03);
+      animation: breathe 14s ease-in-out infinite alternate;
+    }
+    .hero-shade {
+      background:
+        radial-gradient(circle at 70% 35%, transparent 0 18%, rgba(82,16,14,.18) 50%),
+        linear-gradient(90deg, rgba(20,23,20,.88) 0%, rgba(20,23,20,.58) 43%, rgba(82,16,14,.12) 72%),
+        linear-gradient(0deg, rgba(20,23,20,.72), transparent 45%);
+    }
+    .hero .shell { position: relative; z-index: 2; padding: 150px 0 55px; }
+    .hero-copy { max-width: 870px; }
+    .hero .eyebrow { color: #b8d46c; }
+    .hero .display em { color: #f0b84f; }
+    .hero-bottom {
+      margin-top: 48px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(246,240,228,.35);
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, .7fr);
+      align-items: end;
+      gap: 30px;
+    }
+    .hero-intro { margin: 0; max-width: 470px; color: rgba(246,240,228,.78); font-size: 16px; line-height: 1.55; }
+    .hero-stat { border-left: 1px solid rgba(246,240,228,.3); padding-left: 20px; }
+    .hero-stat > strong { display: block; color: #f0b84f; font: 500 32px/1 Georgia, "Times New Roman", serif; }
+    .hero-stat > span { display: block; margin-top: 8px; color: rgba(246,240,228,.7); font-size: 9px; font-weight: 800; letter-spacing: .14em; line-height: 1.5; text-transform: uppercase; }
+    .scroll-tag {
+      position: absolute;
+      right: 22px;
+      bottom: 50px;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: rgba(246,240,228,.7);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      transform: rotate(90deg) translateX(100%);
+      transform-origin: right bottom;
+    }
+    .scroll-tag::before { content: ""; width: 50px; height: 1px; background: currentColor; animation: pulse 1.8s infinite; }
+
+    section { padding: 120px 0; }
+    .problem { padding-top: 35px; overflow: hidden; }
+    .problem-visual {
+      position: relative;
+      min-height: 680px;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: #f6f0e4;
+      background:
+        linear-gradient(90deg, rgba(20,23,20,.9) 0%, rgba(20,23,20,.54) 52%, rgba(20,23,20,.18) 100%),
+        linear-gradient(0deg, rgba(20,23,20,.78), transparent 55%),
+        url("./assets/slaughterhouse-blood-waste.png") center/cover no-repeat;
+    }
+    .problem-visual::after {
+      content: "VALUABLE PROTEIN LOST TO DRAINAGE";
+      position: absolute;
+      right: 25px;
+      bottom: 25px;
+      padding: 10px 13px;
+      border: 1px solid rgba(246,240,228,.42);
+      color: rgba(246,240,228,.8);
+      background: rgba(20,23,20,.62);
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      backdrop-filter: blur(7px);
+    }
+    .problem-visual .shell { position: relative; z-index: 2; padding-bottom: 55px; }
+    .problem-head {
+      width: min(780px, 100%);
+      display: block;
+      padding: 36px 38px;
+      border-left: 3px solid #dfa12e;
+      background: rgba(20,23,20,.76);
+      backdrop-filter: blur(9px);
+    }
+    .problem-head .eyebrow { color: #b8d46c; }
+    .problem-head .section-title em { color: #dfa12e; }
+    .problem-head .lede { max-width: 650px; margin: 22px 0 0; color: rgba(246,240,228,.72); }
+    .problem .cards-shell { padding-top: 70px; }
+    .split-cards { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid rgba(20, 23, 20, .18); }
+    .split-card {
+      position: relative;
+      min-height: 430px;
+      padding: 45px;
+      overflow: hidden;
+      border-right: 1px solid rgba(20, 23, 20, .18);
+      transition: background .35s, color .35s;
+    }
+    .split-card:last-child { border-right: 0; }
+    .split-card:hover { color: #f6f0e4; background: #52100e; }
+    .split-card:last-child:hover { background: #174f34; }
+    .card-no { color: #8c1d18; font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .split-card:hover .card-no { color: #dfa12e; }
+    .split-card h3 { position: relative; z-index: 2; margin: 90px 0 18px; max-width: 430px; font: 500 clamp(30px, 3.5vw, 50px)/1 Georgia, "Times New Roman", serif; letter-spacing: -.045em; }
+    .split-card p { position: relative; z-index: 2; max-width: 390px; color: rgba(20,23,20,.66); line-height: 1.6; transition: color .35s; }
+    .split-card:hover p { color: rgba(246,240,228,.7); }
+    .blood-ring, .grain-disc {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      right: -70px;
+      bottom: -80px;
+      border-radius: 50%;
+    }
+    .blood-ring { border: 36px solid #8c1d18; box-shadow: 0 0 0 28px rgba(140,29,24,.12), 0 0 0 56px rgba(140,29,24,.05); }
+    .grain-disc { background: #dfa12e; box-shadow: inset 0 0 0 40px rgba(246,240,228,.22), 0 0 0 30px rgba(223,161,46,.14), 0 0 0 60px rgba(223,161,46,.06); }
+
+    .process { padding: 0; color: #f6f0e4; background: #141714; }
+    .process .shell { padding: 120px 0; }
+    .process-top { display: flex; justify-content: space-between; gap: 70px; align-items: end; margin-bottom: 80px; }
+    .process .section-title { max-width: 700px; }
+    .process .section-title em { color: #dfa12e; }
+    .process .eyebrow { color: #dfa12e; }
+    .process-note { max-width: 330px; margin: 0; color: rgba(246,240,228,.6); line-height: 1.65; }
+    .flow {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(246,240,228,.15);
+      border: 1px solid rgba(246,240,228,.15);
+    }
+    .flow::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: 91px;
+      left: 12.5%;
+      width: 75%;
+      height: 2px;
+      background: linear-gradient(90deg, #8c1d18, #c45f38, #dfa12e, #b8d46c);
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1.2s .25s ease;
+    }
+    .flow.visible::before { transform: scaleX(1); }
+    .flow-card {
+      min-height: 330px;
+      padding: 35px 25px;
+      background: #141714;
+    }
+    .flow-icon {
+      position: relative;
+      z-index: 3;
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 45px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(246,240,228,.25);
+      border-radius: 50%;
+      color: #f6f0e4;
+      background: #141714;
+      transition: transform .35s, border-color .35s, background .35s;
+    }
+    .flow-card:hover .flow-icon { transform: translateY(-8px) rotate(5deg); border-color: #dfa12e; background: #52100e; }
+    .flow-icon svg { width: 48px; height: 48px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+    .flow-card small { color: #dfa12e; font-size: 9px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .flow-card h3 { margin: 10px 0 13px; font: 500 27px/1 Georgia, "Times New Roman", serif; }
+    .flow-card p { margin: 0; color: rgba(246,240,228,.54); font-size: 13px; line-height: 1.55; }
+    .mixer-feature {
+      position: relative;
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: 1.55fr .65fr;
+      min-height: 510px;
+      border: 1px solid rgba(246,240,228,.18);
+      background: #232824;
+      overflow: hidden;
+    }
+    .mixer-visual {
+      position: relative;
+      min-height: 510px;
+      background: url("./assets/engukuku-feed-mixer.png") center/cover no-repeat;
+      overflow: hidden;
+    }
+    .mixer-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 55%, rgba(35,40,36,.72));
+    }
+    .mixer-stamp {
+      position: absolute;
+      z-index: 2;
+      left: 24px;
+      bottom: 22px;
+      padding: 10px 13px;
+      border: 1px solid rgba(246,240,228,.52);
+      color: #f6f0e4;
+      background: rgba(20,23,20,.7);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+    }
+    .mixer-copy {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 45px 40px;
+      border-left: 1px solid rgba(246,240,228,.18);
+    }
+    .mixer-copy .eyebrow { color: #b8d46c; }
+    .mixer-copy h3 { margin: 0 0 20px; font: 500 clamp(35px, 4vw, 56px)/.96 Georgia, "Times New Roman", serif; letter-spacing: -.055em; }
+    .mixer-copy h3 em { color: #dfa12e; font-weight: 500; }
+    .mixer-copy p { margin: 0; color: rgba(246,240,228,.6); font-size: 14px; line-height: 1.65; }
+    .mixer-copy small {
+      margin-top: 35px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(246,240,228,.18);
+      color: rgba(246,240,228,.42);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      line-height: 1.6;
+      text-transform: uppercase;
+    }
+
+    .product { position: relative; overflow: hidden; }
+    .product::after {
+      content: "PROTEIN";
+      position: absolute;
+      z-index: -1;
+      bottom: -60px;
+      left: -20px;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(20,23,20,.08);
+      font: 800 min(24vw, 320px)/1 "Avenir Next", Avenir, "Trebuchet MS", Arial, sans-serif;
+      letter-spacing: -.1em;
+    }
+    .product-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 100px; align-items: center; }
+    .product-copy .lede { max-width: 500px; margin: 25px 0 36px; }
+    .product-proof {
+      position: relative;
+      min-height: 580px;
+      display: grid;
+      place-items: center;
+    }
+    .orbit { position: absolute; border: 1px solid rgba(20, 23, 20, .18); border-radius: 50%; animation: spin 18s linear infinite; }
+    .orbit.one { width: 520px; height: 520px; }
+    .orbit.two { width: 390px; height: 390px; animation-direction: reverse; animation-duration: 13s; }
+    .orbit::before { content: ""; position: absolute; width: 14px; height: 14px; top: -7px; left: 50%; border-radius: 50%; background: #8c1d18; }
+    .orbit.two::before { background: #dfa12e; }
+    .protein-core {
+      position: relative;
+      z-index: 2;
+      width: 280px;
+      height: 280px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #f6f0e4;
+      background: radial-gradient(circle at 35% 30%, #b34435, #52100e 72%);
+      box-shadow: 0 40px 80px rgba(82,16,14,.28);
+    }
+    .protein-core strong { font: 500 82px/.8 Georgia, "Times New Roman", serif; letter-spacing: -.08em; }
+    .protein-core > div > span { display: block; margin-top: 12px; font-size: 9px; font-weight: 800; letter-spacing: .16em; text-align: center; text-transform: uppercase; }
+    .proof-label {
+      position: absolute;
+      z-index: 3;
+      max-width: 150px;
+      padding: 12px 16px;
+      border: 1px solid rgba(20, 23, 20, .18);
+      background: #f6f0e4;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+    .proof-label.a { top: 50px; left: 0; }
+    .proof-label.b { right: 0; bottom: 80px; }
+
+    .poultry-story {
+      position: relative;
+      min-height: 620px;
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      color: #f6f0e4;
+      background: #174f34;
+    }
+    .poultry-story::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(20,23,20,.86) 0%, rgba(20,23,20,.42) 48%, rgba(20,23,20,.05) 80%),
+        linear-gradient(0deg, rgba(20,23,20,.74), transparent 55%),
+        url("./assets/healthy-poultry.png") center/cover no-repeat;
+      transition: transform .8s ease;
+    }
+    .poultry-story:hover::before { transform: scale(1.015); }
+    .poultry-story .shell { position: relative; z-index: 2; padding-bottom: 55px; }
+    .poultry-note {
+      width: min(510px, 100%);
+      padding: 32px 35px;
+      border-left: 3px solid #dfa12e;
+      background: rgba(20,23,20,.78);
+      backdrop-filter: blur(8px);
+    }
+    .poultry-note .eyebrow { color: #b8d46c; }
+    .poultry-note h3 { margin: 0 0 15px; font: 500 clamp(35px, 4.5vw, 62px)/.95 Georgia, "Times New Roman", serif; letter-spacing: -.055em; }
+    .poultry-note h3 em { color: #dfa12e; font-weight: 500; }
+    .poultry-note p { margin: 0; color: rgba(246,240,228,.72); line-height: 1.65; }
+    .poultry-caption {
+      position: absolute;
+      right: 24px;
+      bottom: 22px;
+      color: rgba(246,240,228,.68);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+
+    .economics { color: #f6f0e4; background: #52100e; }
+    .economics-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 100px; }
+    .economics .eyebrow { color: #dfa12e; }
+    .economics .section-title em { color: #dfa12e; }
+    .economics .lede { color: rgba(246,240,228,.62); }
+    .bars { align-self: end; display: grid; gap: 34px; }
+    .bar-row { display: grid; grid-template-columns: 130px 1fr 100px; align-items: center; gap: 22px; }
+    .bar-name { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .bar-track { height: 11px; background: rgba(246,240,228,.12); }
+    .bar-fill { height: 100%; width: 0; background: rgba(246,240,228,.45); transition: width 1.2s ease; }
+    .bar-row.featured .bar-fill { background: #dfa12e; }
+    .bars.visible .bar-row:nth-child(1) .bar-fill { width: 41%; }
+    .bars.visible .bar-row:nth-child(2) .bar-fill { width: 62%; }
+    .bars.visible .bar-row:nth-child(3) .bar-fill { width: 100%; }
+    .bar-value { color: rgba(246,240,228,.72); font: 500 20px/1 Georgia, "Times New Roman", serif; text-align: right; }
+    .bar-row.featured .bar-value { color: #dfa12e; }
+    .bar-note { grid-column: 2 / -1; margin-top: -20px; color: rgba(246,240,228,.42); font-size: 10px; }
+
+    .impact-head { display: grid; grid-template-columns: 1fr .65fr; gap: 80px; align-items: end; }
+    .impact-head .lede { margin: 0; }
+    .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 70px; border: 1px solid rgba(20, 23, 20, .18); }
+    .impact-card { position: relative; min-height: 350px; padding: 35px; border-right: 1px solid rgba(20, 23, 20, .18); overflow: hidden; }
+    .impact-card:last-child { border-right: 0; }
+    .impact-card small { color: #8c1d18; font-size: 9px; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
+    .impact-card strong { display: block; margin: 90px 0 10px; font: 500 clamp(48px, 6vw, 82px)/.8 Georgia, "Times New Roman", serif; letter-spacing: -.07em; }
+    .impact-card p { max-width: 250px; color: rgba(20,23,20,.58); line-height: 1.55; }
+    .impact-card::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: -75px;
+      top: -75px;
+      border-radius: 50%;
+      background: #8c1d18;
+      transition: transform .5s;
+    }
+    .impact-card:nth-child(2)::after { background: #dfa12e; }
+    .impact-card:nth-child(3)::after { background: #174f34; }
+    .impact-card:hover::after { transform: scale(1.4); }
+
+    .cta-section { padding: 35px; }
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      min-height: 620px;
+      padding: 80px;
+      display: grid;
+      grid-template-columns: 1fr .75fr;
+      align-items: end;
+      gap: 80px;
+      color: #f6f0e4;
+      background:
+        linear-gradient(90deg, rgba(20,23,20,.94) 0%, rgba(20,23,20,.78) 46%, rgba(20,23,20,.63) 100%),
+        url("./assets/farmers-feeding-livestock.png") center/cover no-repeat;
+    }
+    .cta-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(20,23,20,.42), transparent 65%);
+      pointer-events: none;
+    }
+    .cta-copy, .contact-form { position: relative; z-index: 2; }
+    .cta-panel .eyebrow { color: #b8d46c; }
+    .cta-panel .section-title { max-width: 650px; }
+    .cta-panel .section-title em { color: #dfa12e; }
+    .cta-copy p { max-width: 530px; margin: 24px 0 0; color: rgba(246,240,228,.65); line-height: 1.65; }
+    .contact-form { display: grid; gap: 13px; padding: 30px; border: 1px solid rgba(246,240,228,.26); background: rgba(20,23,20,.62); backdrop-filter: blur(10px); }
+    .contact-form label { color: rgba(246,240,228,.62); font-size: 9px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid rgba(246,240,228,.35);
+      border-radius: 0;
+      outline: 0;
+      padding: 8px 0 12px;
+      color: #f6f0e4;
+      background: transparent;
+    }
+    .contact-form select option { color: #141714; }
+    .contact-form textarea { height: 70px; resize: vertical; }
+    .contact-form .btn { margin-top: 8px; border-color: #dfa12e; color: #141714; background: #dfa12e; }
+    .form-note { min-height: 16px; margin: 0; color: #b8d46c; font-size: 11px; }
+
+    footer { padding: 34px 0; color: #f6f0e4; background: #141714; }
+    footer .shell { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: 45px; }
+    footer p { margin: 0; color: rgba(246,240,228,.45); font-size: 10px; letter-spacing: .08em; line-height: 1.5; text-transform: uppercase; }
+    footer a { color: rgba(246,240,228,.7); font-size: 10px; font-weight: 800; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
+    .mobile-dock { display: none; }
+    .rail-arrow { display: none; }
+
+    .reveal { opacity: 0; transform: translateY(35px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @keyframes breathe { to { transform: scale(1.08) translate3d(1%, -1%, 0); } }
+    @keyframes pulse { 50% { width: 25px; opacity: .5; } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        position: fixed;
+        inset: 0 0 auto;
+        display: grid;
+        align-content: center;
+        justify-items: center;
+        gap: 26px;
+        min-height: 100svh;
+        color: #f6f0e4;
+        background: #141714;
+        transform: translateY(-110%);
+        transition: transform .4s;
+      }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links a:not(.nav-cta) { font: 500 34px/1 Georgia, "Times New Roman", serif; letter-spacing: -.03em; text-transform: none; }
+      .menu-toggle { position: relative; z-index: 2; display: block; padding: 10px; }
+      .hero-bottom, .product-grid, .economics-grid, .impact-head, .cta-panel { grid-template-columns: 1fr; }
+      .hero-bottom { grid-template-columns: repeat(3, 1fr); }
+      .hero-intro { grid-column: 1 / -1; }
+      .product-grid, .economics-grid, .impact-head { gap: 35px; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .flow::before { display: none; }
+      .flow-card { min-height: 280px; }
+      .mixer-feature { grid-template-columns: 1fr; }
+      .mixer-copy { border-left: 0; border-top: 1px solid rgba(246,240,228,.18); }
+      .split-card { min-height: 400px; }
+      .cta-panel { padding: 55px 40px; }
+    }
+    @media (max-width: 640px) {
+      html { scroll-padding-top: 78px; }
+      body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+      .shell { width: calc(100% - 28px); }
+      section { padding: 64px 0; }
+      .section-title { font-size: clamp(38px, 12vw, 52px); line-height: .98; }
+      .lede { font-size: 16px; line-height: 1.55; }
+      .eyebrow { margin-bottom: 13px; font-size: 9px; }
+      .btn { width: 100%; min-height: 54px; }
+      nav {
+        position: fixed;
+        top: max(8px, env(safe-area-inset-top));
+        left: 10px;
+        right: 10px;
+        width: auto;
+        padding: 0;
+        border: 0;
+        background: transparent;
+      }
+      .logo-mark { width: 90px; height: 66px; }
+      nav .shell { width: 100%; margin: 0; }
+      nav .logo { min-width: 0; filter: drop-shadow(0 5px 10px rgba(20,23,20,.28)); }
+      .menu-toggle { display: none; }
+      .nav-links {
+        inset: -9px -10px auto;
+        min-height: calc(100svh - max(8px, env(safe-area-inset-top)));
+        border-radius: 18px;
+      }
+      .nav-links a { min-width: 220px; padding: 10px; text-align: center; }
+      .nav-links .nav-cta { padding: 17px 20px; }
+      .hero { min-height: 700px; height: auto; max-height: none; align-items: start; }
+      .hero-image { background-position: 70% center; }
+      .hero-shade { background: linear-gradient(0deg, rgba(20,23,20,.94) 0%, rgba(20,23,20,.58) 62%, rgba(20,23,20,.28)); }
+      .hero .shell { padding: 190px 0 24px; }
+      .display { font-size: clamp(34px, 10.2vw, 40px); line-height: .98; letter-spacing: -.045em; }
+      .mobile-break { display: block; }
+      .hero-bottom {
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin-top: 28px;
+        padding-top: 0;
+        border: 1px solid rgba(246,240,228,.2);
+        border-radius: 18px;
+        overflow: hidden;
+        background: rgba(20,23,20,.36);
+        backdrop-filter: blur(8px);
+      }
+      .hero-intro { padding: 16px; font-size: 14px; line-height: 1.5; }
+      .hero-stat { min-height: 88px; padding: 16px; border-top: 1px solid rgba(246,240,228,.2); border-left: 0; }
+      .hero-stat:nth-of-type(2) { border-left: 1px solid rgba(246,240,228,.2); }
+      .hero-stat strong { font-size: 25px; }
+      .hero-stat > span { margin-top: 6px; font-size: 8px; }
+      .hero-stat:last-child { display: none; }
+      .scroll-tag { display: none; }
+      .problem-head { margin-bottom: 28px; }
+      .process-top, .impact-head { gap: 20px; }
+      .problem { padding-top: 10px; }
+      .problem-visual { min-height: 600px; align-items: end; background-position: 61% center; }
+      .problem-visual::after { right: 14px; bottom: 12px; font-size: 7px; }
+      .problem-visual .shell { width: calc(100% - 28px); padding-bottom: 55px; }
+      .problem-head { margin: 0; padding: 24px 20px; border-radius: 18px; }
+      .problem-head .section-title { font-size: clamp(38px, 11.5vw, 49px); }
+      .problem-head .lede { margin-top: 16px; font-size: 14px; }
+      .problem .cards-shell { padding-top: 35px; }
+      .split-cards, .impact-grid, .flow {
+        width: calc(100vw - 28px);
+        display: flex;
+        gap: 12px;
+        padding-right: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        border: 0;
+        background: transparent;
+        scrollbar-width: none;
+      }
+      .split-cards::-webkit-scrollbar, .impact-grid::-webkit-scrollbar, .flow::-webkit-scrollbar { display: none; }
+      .split-card, .impact-card, .flow-card {
+        position: relative;
+        flex: 0 0 calc(100vw - 88px);
+        scroll-snap-align: center;
+        border: 1px solid rgba(20, 23, 20, .18);
+        border-radius: 20px;
+      }
+      .rail-arrow {
+        position: relative;
+        z-index: 8;
+        flex: 0 0 38px;
+        align-self: center;
+        width: 38px;
+        height: 64px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(20,23,20,.16);
+        border-radius: 100px;
+        color: #141714;
+        background: #dfa12e;
+        box-shadow: 0 8px 24px rgba(20,23,20,.2);
+        font: 700 21px/1 "Avenir Next", Avenir, Arial, sans-serif;
+        animation: next-card-arrow 1.5s ease-in-out infinite;
+      }
+      .flow .rail-arrow {
+        border-color: rgba(246,240,228,.28);
+        color: #141714;
+      }
+      .split-card { min-height: 360px; padding: 26px; }
+      .split-card h3 { margin-top: 70px; }
+      .split-card p { max-width: calc(100% - 20px); }
+      .blood-ring, .grain-disc { opacity: .5; }
+      .process .shell { width: 100%; padding: 64px 14px; }
+      .process-top { display: grid; gap: 25px; margin-bottom: 45px; }
+      .flow { width: calc(100vw - 28px); }
+      .flow-card { min-height: 300px; padding: 24px; background: #181d19; }
+      .flow-icon { width: 82px; height: 82px; margin: 0 0 40px; }
+      .flow-icon svg { width: 38px; height: 38px; }
+      .mixer-feature { margin-top: 32px; min-height: 0; border-radius: 22px; }
+      .mixer-visual { min-height: 280px; background-position: 39% center; }
+      .mixer-visual::after { background: linear-gradient(0deg, rgba(35,40,36,.35), transparent 55%); }
+      .mixer-copy { padding: 28px 24px; }
+      .mixer-copy h3 { font-size: 39px; }
+      .product-grid { gap: 30px; }
+      .product-proof { min-height: 350px; transform: none; overflow: hidden; }
+      .orbit.one { width: min(92vw, 390px); height: min(92vw, 390px); }
+      .orbit.two { width: min(72vw, 300px); height: min(72vw, 300px); }
+      .protein-core { width: 210px; height: 210px; }
+      .protein-core strong { font-size: 62px; }
+      .proof-label { max-width: 128px; padding: 9px 11px; font-size: 8px; }
+      .proof-label.a { top: 20px; left: 0; }
+      .proof-label.b { right: 0; bottom: 25px; }
+      .poultry-story { min-height: 560px; align-items: end; }
+      .poultry-story::before {
+        background:
+          linear-gradient(0deg, rgba(20,23,20,.9) 0%, rgba(20,23,20,.28) 70%),
+          url("./assets/healthy-poultry.png") 62% center/cover no-repeat;
+      }
+      .poultry-story .shell { width: calc(100% - 28px); padding-bottom: 14px; }
+      .poultry-note { padding: 24px 20px; border-radius: 18px; }
+      .poultry-note h3 { font-size: 41px; }
+      .poultry-caption { display: none; }
+      .economics-grid { gap: 38px; }
+      .bars { gap: 28px; }
+      .bar-row { grid-template-columns: 1fr auto; gap: 10px 12px; }
+      .bar-name { font-size: 9px; }
+      .bar-track { grid-column: 1 / -1; grid-row: 2; height: 9px; }
+      .bar-value { grid-column: 2; grid-row: 1; font-size: 17px; }
+      .bar-note { grid-column: 1 / -1; margin-top: 0; }
+      .impact-grid { margin-top: 30px; }
+      .impact-card { min-height: 300px; padding: 26px; }
+      .impact-card strong { margin-top: 75px; }
+      .cta-section { padding: 10px; }
+      .cta-panel {
+        min-height: 0;
+        padding: 360px 14px 14px;
+        gap: 18px;
+        border-radius: 24px;
+        background:
+          linear-gradient(0deg, rgba(20,23,20,.98) 0%, rgba(20,23,20,.82) 58%, rgba(20,23,20,.15) 100%),
+          url("./assets/farmers-feeding-livestock.png") 58% top/auto 380px no-repeat,
+          #141714;
+      }
+      .cta-copy { padding: 0 8px; }
+      .cta-panel .section-title { font-size: 42px; }
+      .contact-form { gap: 15px; padding: 22px 18px; border-radius: 20px; }
+      .contact-form input, .contact-form select, .contact-form textarea { min-height: 48px; font-size: 16px; }
+      footer { padding: 30px 0 calc(24px + env(safe-area-inset-bottom)); }
+      footer .shell { grid-template-columns: 1fr; gap: 18px; }
+      .mobile-dock {
+        position: fixed;
+        z-index: 40;
+        top: auto;
+        left: 10px;
+        right: auto;
+        bottom: max(8px, env(safe-area-inset-bottom));
+        width: calc(100vw - 20px);
+        max-width: calc(100vw - 20px);
+        height: 62px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        align-items: center;
+        padding: 6px;
+        border: 1px solid rgba(246,240,228,.16);
+        border-radius: 20px;
+        color: #f6f0e4;
+        background: rgba(20,23,20,.88);
+        box-shadow: 0 12px 35px rgba(20,23,20,.28);
+        backdrop-filter: blur(18px);
+      }
+      .mobile-dock a {
+        display: grid;
+        place-items: center;
+        gap: 3px;
+        min-height: 48px;
+        border-radius: 15px;
+        color: rgba(246,240,228,.7);
+        font-size: 7px;
+        font-weight: 800;
+        letter-spacing: .08em;
+        text-decoration: none;
+        text-transform: uppercase;
+        min-width: 0;
+        overflow: hidden;
+      }
+      .mobile-dock a:last-child { color: #141714; background: #dfa12e; }
+      .mobile-dock svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; }
+    }
+    @keyframes next-card-arrow {
+      50% { transform: translateX(5px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="shell">
+      <a class="logo" href="#top" aria-label="Engukuku BioProtein home">
+        <img class="logo-mark" src="./assets/engukuku-official-logo.png" alt="Engukuku">
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#problem">Why it matters</a>
+        <a href="#process">Our process</a>
+        <a href="#product">The product</a>
+        <a href="#impact">Impact</a>
+        <a class="nav-cta" href="#contact">Start a conversation</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+        <svg width="25" height="18" viewBox="0 0 25 18" fill="none"><path d="M1 2h23M1 9h23M1 16h23" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="hero-image"></div>
+      <div class="hero-shade"></div>
+      <div class="shell">
+        <div class="hero-copy">
+          <h1 class="display">We bioconvert<br class="mobile-break"> slaughterhouse blood<br class="mobile-break"> into <em>animal feed<br class="mobile-break"> protein.</em></h1>
+        </div>
+        <div class="hero-bottom">
+          <p class="hero-intro">Engukuku collects slaughterhouse blood and bioconverts it into protein concentrates for animal feed formulation.</p>
+          <div class="hero-stat"><strong><span data-count="80">0</span>-90%</strong><span>Typical crude protein range</span></div>
+          <div class="hero-stat"><strong>Local</strong><span>Supply for feed makers</span></div>
+          <div class="hero-stat"><strong>Zero</strong><span>Useful protein wasted</span></div>
+        </div>
+      </div>
+      <div class="scroll-tag">Follow the material</div>
+    </header>
+
+    <section class="problem" id="problem">
+      <div class="problem-visual">
+        <div class="shell">
+          <div class="problem-head reveal">
+            <p class="eyebrow">The problem we solve</p>
+            <h2 class="section-title">Slaughterhouse blood is discarded while feed protein remains <em>expensive.</em></h2>
+            <p class="lede">Blood that could be bioconverted into animal feed protein concentrate is often washed away, creating a costly and difficult waste problem.</p>
+          </div>
+        </div>
+      </div>
+      <div class="shell cards-shell">
+        <div class="split-cards reveal">
+          <article class="split-card">
+            <span class="card-no">01 / The waste side</span>
+            <h3>Slaughterhouse blood contains valuable protein.</h3>
+            <p>When it is discarded or poorly handled, slaughterhouses lose a useful raw material and create an environmental problem.</p>
+            <div class="blood-ring"></div>
+          </article>
+          <span class="rail-arrow" aria-hidden="true">→</span>
+          <article class="split-card">
+            <span class="card-no">02 / The feed side</span>
+            <h3>Feed makers need affordable protein concentrates.</h3>
+            <p>Engukuku supplies a locally produced blood protein concentrate for use in balanced animal feed formulations.</p>
+            <div class="grain-disc"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process" id="process">
+      <div class="shell">
+        <div class="process-top reveal">
+          <div>
+            <p class="eyebrow">How we bioconvert blood</p>
+            <h2 class="section-title">From slaughterhouse blood to <em>protein concentrate.</em></h2>
+          </div>
+          <p class="process-note">We collect fresh slaughterhouse blood, stabilise it, remove moisture, concentrate the protein and prepare it for animal feed formulation.</p>
+        </div>
+        <div class="flow reveal">
+          <article class="flow-card">
+            <div class="flow-icon">
+              <svg viewBox="0 0 48 48"><path d="M24 6c-7 10-13 17-13 25a13 13 0 0 0 26 0c0-8-6-15-13-25Z"/><path d="M18 31c1 4 3 6 7 7"/></svg>
+            </div>
+            <small>Stage 01</small><h3>Collect</h3><p>Fresh slaughterhouse blood is collected before it is discarded or spoiled.</p>
+          </article>
+          <span class="rail-arrow" aria-hidden="true">→</span>
+          <article class="flow-card">
+            <div class="flow-icon">
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M24 14v10l7 5M24 3v5M24 40v5M3 24h5M40 24h5"/></svg>
+            </div>
+            <small>Stage 02</small><h3>Stabilise</h3><p>Controlled handling limits spoilage and prepares the blood for bioconversion.</p>
+          </article>
+          <article class="flow-card">
+            <div class="flow-icon">
+              <svg viewBox="0 0 48 48"><path d="M12 33h24M14 27h20M17 21h14M20 15h8"/><path d="M9 39h30"/></svg>
+            </div>
+            <small>Stage 03</small><h3>Concentrate</h3><p>Moisture is removed to produce a stable, protein-dense feed ingredient.</p>
+          </article>
+          <article class="flow-card">
+            <div class="flow-icon">
+              <svg viewBox="0 0 48 48"><path d="M12 17h24v24H12zM17 17V9h14v8M18 27h12M18 33h8"/></svg>
+            </div>
+            <small>Stage 04</small><h3>Supply</h3><p>The protein concentrate is ground, tested, packed and supplied for animal feed formulation.</p>
+          </article>
+        </div>
+        <div class="mixer-feature reveal">
+          <div class="mixer-visual" role="img" aria-label="Engukuku BioProtein concentrate being poured into a large animal feed mixer">
+            <span class="mixer-stamp">Formulation ready / locally supplied</span>
+          </div>
+          <div class="mixer-copy">
+            <p class="eyebrow">At the feed mill</p>
+            <h3>Protein concentrate for <em>feed formulation.</em></h3>
+            <p>Feed millers blend Engukuku blood protein concentrate with energy sources, minerals and other ingredients to formulate balanced animal feed.</p>
+            <small>Bioconverted slaughterhouse blood ready for formulation</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="product" id="product">
+      <div class="shell product-grid">
+        <div class="product-copy reveal">
+          <p class="eyebrow">The product</p>
+          <h2 class="section-title">A protein concentrate made from <em>slaughterhouse blood.</em></h2>
+          <p class="lede">Engukuku BioProtein is produced by bioconverting slaughterhouse blood into a protein-dense ingredient for animal feed formulation.</p>
+          <a class="btn" href="#contact">Discuss formulation <span class="arrow">→</span></a>
+        </div>
+        <div class="product-proof reveal">
+          <div class="orbit one"></div>
+          <div class="orbit two"></div>
+          <div class="protein-core">
+            <div><strong><span data-count="80">0</span>%+</strong><span>Crude protein potential</span></div>
+          </div>
+          <div class="proof-label a">Bioconverted slaughterhouse blood</div>
+          <div class="proof-label b">For animal feed formulation</div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="poultry-story reveal" aria-label="Healthy poultry supported by strong nutrition">
+      <div class="shell">
+        <div class="poultry-note">
+          <p class="eyebrow">Poultry feed formulation</p>
+          <h3>Blood protein concentrate for <em>balanced poultry feed.</em></h3>
+          <p>Feed formulators can use Engukuku protein concentrate as a protein ingredient in balanced poultry rations.</p>
+        </div>
+      </div>
+      <span class="poultry-caption">Protein concentrate for poultry feed</span>
+    </aside>
+
+    <section class="economics">
+      <div class="shell economics-grid">
+        <div class="reveal">
+          <p class="eyebrow">Protein economics</p>
+          <h2 class="section-title">Compare the cost of <em>usable protein.</em></h2>
+          <p class="lede">Engukuku bioconverts slaughterhouse blood into a high-protein concentrate that can reduce the cost of protein used in animal feed formulation.</p>
+        </div>
+        <div class="bars reveal">
+          <div class="bar-row featured"><span class="bar-name">Engukuku concentrate</span><div class="bar-track"><div class="bar-fill"></div></div><span class="bar-value">TZS 2,500</span><small class="bar-note">Illustrative cost per kg crude protein</small></div>
+          <div class="bar-row"><span class="bar-name">Soy meal</span><div class="bar-track"><div class="bar-fill"></div></div><span class="bar-value">TZS 3,830</span></div>
+          <div class="bar-row"><span class="bar-name">Fishmeal</span><div class="bar-track"><div class="bar-fill"></div></div><span class="bar-value">TZS 6,150</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="shell">
+        <div class="impact-head reveal">
+          <div>
+            <p class="eyebrow">Who benefits</p>
+            <h2 class="section-title">Blood bioconversion benefits slaughterhouses and <em>feed makers.</em></h2>
+          </div>
+          <p class="lede">We reduce slaughterhouse blood disposal and produce a local protein concentrate for animal feed formulation.</p>
+        </div>
+        <div class="impact-grid reveal">
+          <article class="impact-card"><small>For slaughterhouses</small><strong>Less</strong><p>blood disposal and fewer environmental management problems.</p></article>
+          <span class="rail-arrow" aria-hidden="true">→</span>
+          <article class="impact-card"><small>For feed makers</small><strong>More</strong><p>access to a locally produced protein concentrate.</p></article>
+          <article class="impact-card"><small>For farmers</small><strong>Better</strong><p>access to animal feed formulated with local protein ingredients.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+      <div class="cta-panel">
+        <div class="cta-copy reveal">
+          <p class="eyebrow">Work with Engukuku</p>
+          <h2 class="section-title">We bioconvert slaughterhouse blood into <em>animal feed protein concentrate.</em></h2>
+          <p>We work with slaughterhouse operators who supply blood, feed millers who formulate animal feed, and farmers who need reliable feed ingredients.</p>
+        </div>
+        <form class="contact-form reveal" id="contactForm">
+          <label for="name">Your name</label>
+          <input id="name" name="name" required placeholder="Name or organisation">
+          <label for="interest">I am interested in</label>
+          <select id="interest" name="interest">
+            <option>Buying BioProtein</option>
+            <option>Supplying slaughterhouse blood</option>
+            <option>Research or quality partnership</option>
+            <option>Investment or collaboration</option>
+          </select>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="Tell us what you are working on"></textarea>
+          <button class="btn" type="submit">Send enquiry <span class="arrow">→</span></button>
+          <p class="form-note" id="formNote"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <a class="logo" href="#top">
+        <img class="logo-mark" src="./assets/engukuku-official-logo.png" alt="Engukuku">
+      </a>
+      <p>Dar es Salaam, Tanzania<br>© <span id="year"></span> Engukuku BioProtein</p>
+      <a href="#contact">Start a conversation ↑</a>
+    </div>
+  </footer>
+
+  <nav class="mobile-dock" aria-label="Mobile navigation">
+    <a href="#top">
+      <svg viewBox="0 0 24 24"><path d="m4 11 8-7 8 7v9H4Z"/><path d="M9 20v-6h6v6"/></svg>
+      Home
+    </a>
+    <a href="#process">
+      <svg viewBox="0 0 24 24"><path d="M5 5h14v4H5zM5 15h14v4H5z"/><path d="M8 9v6M16 9v6"/></svg>
+      Process
+    </a>
+    <a href="#product">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 12h8M12 8v8"/></svg>
+      Product
+    </a>
+    <a href="#contact">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg>
+      Contact
+    </a>
+  </nav>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    menuToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", open);
+    });
+    navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }));
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("visible");
+        if (entry.target.classList.contains("product-proof") || entry.target.classList.contains("hero")) {
+          entry.target.querySelectorAll("[data-count]").forEach(countUp);
+        }
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: .18 });
+
+    document.querySelectorAll(".reveal, .hero").forEach(el => observer.observe(el));
+
+    function countUp(el) {
+      const target = Number(el.dataset.count);
+      const duration = 1100;
+      const start = performance.now();
+      const tick = now => {
+        const progress = Math.min((now - start) / duration, 1);
+        el.textContent = Math.floor(target * (1 - Math.pow(1 - progress, 3)));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
+    document.getElementById("contactForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.target;
+      const subject = encodeURIComponent(`Engukuku enquiry: ${form.interest.value}`);
+      const body = encodeURIComponent(
+        `Name or organisation: ${form.name.value}\n` +
+        `Interest: ${form.interest.value}\n\n` +
+        `${form.message.value}`
+      );
+      const note = document.getElementById("formNote");
+      note.textContent = "Opening your email app with the enquiry prepared.";
+      window.location.href = `mailto:alexander.abigail050@gmail.com?subject=${subject}&body=${body}`;
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

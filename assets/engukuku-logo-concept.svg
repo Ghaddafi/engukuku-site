@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000">
+  <rect width="1600" height="1000" fill="#f6f0e4"/>
+  <rect x="70" y="70" width="1460" height="860" rx="42" fill="#141714"/>
+  <circle cx="410" cy="430" r="235" fill="#1d211d"/>
+  <path d="M410 195C322 306 263 390 263 508c0 92 66 166 155 166 91 0 164-74 164-166 0-118-67-202-172-313Z" fill="#8c1d18"/>
+  <path d="M324 510c0-69 44-125 104-125 61 0 110 49 110 110 0 96-89 159-190 111" fill="none" stroke="#b8d46c" stroke-width="32" stroke-linecap="round"/>
+  <path d="m337 554 5 62 62-11" fill="none" stroke="#b8d46c" stroke-width="32" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="432" cy="492" r="55" fill="#dfa12e"/>
+  <path d="M410 441v102M381 458l88 68M469 458l-88 68" fill="none" stroke="#f6f0e4" stroke-width="8" stroke-linecap="round" opacity=".78"/>
+  <text x="710" y="440" fill="#f6f0e4" font-family="Georgia, serif" font-size="150" font-weight="700" letter-spacing="-8">Engukuku</text>
+  <text x="720" y="520" fill="#dfa12e" font-family="Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="13">BIOCONVERTED FEED PROTEIN</text>
+  <path d="M716 575h655" stroke="#f6f0e4" stroke-width="1" opacity=".22"/>
+  <text x="716" y="645" fill="#f6f0e4" font-family="Arial, sans-serif" font-size="27" letter-spacing="1" opacity=".7">Blood collected. Protein concentrated. Feed strengthened.</text>
+  <g transform="translate(718 715)">
+    <rect width="360" height="108" rx="54" fill="#f6f0e4"/>
+    <path d="M56 20C33 49 20 68 20 87a38 38 0 0 0 72 17C66 104 45 84 45 61c0-17 11-31 26-31 16 0 29 13 29 29 0 24-22 40-47 28" transform="translate(4 -5) scale(.75)" fill="#8c1d18"/>
+    <circle cx="76" cy="54" r="14" fill="#dfa12e"/>
+    <text x="115" y="66" fill="#141714" font-family="Georgia, serif" font-size="43" font-weight="700" letter-spacing="-2">Engukuku</text>
+  </g>
+  <text x="1110" y="760" fill="#b8d46c" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="5">PRIMARY LOGO CONCEPT</text>
+  <text x="1110" y="796" fill="#f6f0e4" font-family="Arial, sans-serif" font-size="17" opacity=".58">Designed for bags, signage, web and favicon use</text>
+</svg>
