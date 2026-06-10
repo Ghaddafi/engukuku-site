@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Engukuku bioconverts slaughterhouse blood into protein concentrates for animal feed formulation.">
   <link rel="icon" href="./assets/favicon.png" type="image/png">
+  <link rel="preload" as="image" href="./assets/engukuku-material-flow.webp" type="image/webp" media="(min-width: 641px)" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/engukuku-material-flow-mobile.webp" type="image/webp" media="(max-width: 640px)" fetchpriority="high">
   <title>Engukuku BioProtein | Slaughterhouse blood bioconversion</title>
   <style>
     * { box-sizing: border-box; }
@@ -15,16 +17,6 @@
       background: #f6f0e4;
       font-family: "Avenir Next", Avenir, "Trebuchet MS", Arial, sans-serif;
       overflow-x: hidden;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      opacity: .26;
-      pointer-events: none;
-      z-index: 20;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
-      mix-blend-mode: multiply;
     }
     a { color: inherit; }
     button, input, textarea, select { font: inherit; }
@@ -161,7 +153,7 @@
     }
     .hero-image, .hero-shade { position: absolute; inset: 0; }
     .hero-image {
-      background: url("./assets/engukuku-material-flow.png") center/cover no-repeat;
+      background: url("./assets/engukuku-material-flow.webp") center/cover no-repeat;
       transform: scale(1.03);
       animation: breathe 14s ease-in-out infinite alternate;
     }
@@ -218,7 +210,13 @@
       background:
         linear-gradient(90deg, rgba(20,23,20,.9) 0%, rgba(20,23,20,.54) 52%, rgba(20,23,20,.18) 100%),
         linear-gradient(0deg, rgba(20,23,20,.78), transparent 55%),
-        url("./assets/slaughterhouse-blood-waste.png") center/cover no-repeat;
+        #52100e;
+    }
+    .problem-visual.bg-loaded {
+      background:
+        linear-gradient(90deg, rgba(20,23,20,.9) 0%, rgba(20,23,20,.54) 52%, rgba(20,23,20,.18) 100%),
+        linear-gradient(0deg, rgba(20,23,20,.78), transparent 55%),
+        url("./assets/slaughterhouse-blood-waste.webp") center/cover no-repeat;
     }
     .problem-visual::after {
       content: "VALUABLE PROTEIN LOST TO DRAINAGE";
@@ -342,9 +340,10 @@
     .mixer-visual {
       position: relative;
       min-height: 510px;
-      background: url("./assets/engukuku-feed-mixer.png") center/cover no-repeat;
+      background: #232824;
       overflow: hidden;
     }
+    .mixer-visual.bg-loaded { background: url("./assets/engukuku-feed-mixer.webp") center/cover no-repeat; }
     .mixer-visual::after {
       content: "";
       position: absolute;
@@ -461,9 +460,14 @@
       inset: 0;
       background:
         linear-gradient(90deg, rgba(20,23,20,.86) 0%, rgba(20,23,20,.42) 48%, rgba(20,23,20,.05) 80%),
-        linear-gradient(0deg, rgba(20,23,20,.74), transparent 55%),
-        url("./assets/healthy-poultry.png") center/cover no-repeat;
+        linear-gradient(0deg, rgba(20,23,20,.74), transparent 55%);
       transition: transform .8s ease;
+    }
+    .poultry-story.bg-loaded::before {
+      background:
+        linear-gradient(90deg, rgba(20,23,20,.86) 0%, rgba(20,23,20,.42) 48%, rgba(20,23,20,.05) 80%),
+        linear-gradient(0deg, rgba(20,23,20,.74), transparent 55%),
+        url("./assets/healthy-poultry.webp") center/cover no-repeat;
     }
     .poultry-story:hover::before { transform: scale(1.015); }
     .poultry-story .shell { position: relative; z-index: 2; padding-bottom: 55px; }
@@ -544,7 +548,12 @@
       color: #f6f0e4;
       background:
         linear-gradient(90deg, rgba(20,23,20,.94) 0%, rgba(20,23,20,.78) 46%, rgba(20,23,20,.63) 100%),
-        url("./assets/farmers-feeding-livestock.png") center/cover no-repeat;
+        #141714;
+    }
+    .cta-panel.bg-loaded {
+      background:
+        linear-gradient(90deg, rgba(20,23,20,.94) 0%, rgba(20,23,20,.78) 46%, rgba(20,23,20,.63) 100%),
+        url("./assets/farmers-feeding-livestock.webp") center/cover no-repeat;
     }
     .cta-panel::before {
       content: "";
@@ -648,7 +657,7 @@
       .nav-links a { min-width: 220px; padding: 10px; text-align: center; }
       .nav-links .nav-cta { padding: 17px 20px; }
       .hero { min-height: 700px; height: auto; max-height: none; align-items: start; }
-      .hero-image { background-position: 70% center; }
+      .hero-image { background-image: url("./assets/engukuku-material-flow-mobile.webp"); background-position: 70% center; }
       .hero-shade { background: linear-gradient(0deg, rgba(20,23,20,.94) 0%, rgba(20,23,20,.58) 62%, rgba(20,23,20,.28)); }
       .hero .shell { padding: 190px 0 24px; }
       .display { font-size: clamp(34px, 10.2vw, 40px); line-height: .98; letter-spacing: -.045em; }
@@ -674,7 +683,23 @@
       .problem-head { margin-bottom: 28px; }
       .process-top, .impact-head { gap: 20px; }
       .problem { padding-top: 10px; }
-      .problem-visual { min-height: 600px; align-items: end; background-position: 61% center; }
+      .problem-visual {
+        min-height: 600px;
+        align-items: end;
+        background-image:
+          linear-gradient(90deg, rgba(20,23,20,.9) 0%, rgba(20,23,20,.54) 52%, rgba(20,23,20,.18) 100%),
+          linear-gradient(0deg, rgba(20,23,20,.78), transparent 55%);
+        background-position: 61% center;
+      }
+      .problem-visual.bg-loaded {
+        min-height: 600px;
+        align-items: end;
+        background-image:
+          linear-gradient(90deg, rgba(20,23,20,.9) 0%, rgba(20,23,20,.54) 52%, rgba(20,23,20,.18) 100%),
+          linear-gradient(0deg, rgba(20,23,20,.78), transparent 55%),
+          url("./assets/slaughterhouse-blood-waste-mobile.webp");
+        background-position: 61% center;
+      }
       .problem-visual::after { right: 14px; bottom: 12px; font-size: 7px; }
       .problem-visual .shell { width: calc(100% - 28px); padding-bottom: 55px; }
       .problem-head { margin: 0; padding: 24px 20px; border-radius: 18px; }
@@ -733,6 +758,7 @@
       .flow-icon svg { width: 38px; height: 38px; }
       .mixer-feature { margin-top: 32px; min-height: 0; border-radius: 22px; }
       .mixer-visual { min-height: 280px; background-position: 39% center; }
+      .mixer-visual.bg-loaded { background-image: url("./assets/engukuku-feed-mixer-mobile.webp"); }
       .mixer-visual::after { background: linear-gradient(0deg, rgba(35,40,36,.35), transparent 55%); }
       .mixer-copy { padding: 28px 24px; }
       .mixer-copy h3 { font-size: 39px; }
@@ -746,10 +772,10 @@
       .proof-label.a { top: 20px; left: 0; }
       .proof-label.b { right: 0; bottom: 25px; }
       .poultry-story { min-height: 560px; align-items: end; }
-      .poultry-story::before {
+      .poultry-story.bg-loaded::before {
         background:
           linear-gradient(0deg, rgba(20,23,20,.9) 0%, rgba(20,23,20,.28) 70%),
-          url("./assets/healthy-poultry.png") 62% center/cover no-repeat;
+          url("./assets/healthy-poultry-mobile.webp") 62% center/cover no-repeat;
       }
       .poultry-story .shell { width: calc(100% - 28px); padding-bottom: 14px; }
       .poultry-note { padding: 24px 20px; border-radius: 18px; }
@@ -771,9 +797,12 @@
         padding: 360px 14px 14px;
         gap: 18px;
         border-radius: 24px;
+        background: #141714;
+      }
+      .cta-panel.bg-loaded {
         background:
           linear-gradient(0deg, rgba(20,23,20,.98) 0%, rgba(20,23,20,.82) 58%, rgba(20,23,20,.15) 100%),
-          url("./assets/farmers-feeding-livestock.png") 58% top/auto 380px no-repeat,
+          url("./assets/farmers-feeding-livestock-mobile.webp") 58% top/auto 380px no-repeat,
           #141714;
       }
       .cta-copy { padding: 0 8px; }
@@ -833,7 +862,7 @@
   <nav>
     <div class="shell">
       <a class="logo" href="#top" aria-label="Engukuku BioProtein home">
-        <img class="logo-mark" src="./assets/engukuku-official-logo.png" alt="Engukuku">
+        <img class="logo-mark" src="./assets/engukuku-official-logo.webp" alt="Engukuku" width="588" height="525" fetchpriority="high" decoding="async">
       </a>
       <div class="nav-links" id="navLinks">
         <a href="#problem">Why it matters</a>
@@ -1038,7 +1067,7 @@
   <footer>
     <div class="shell">
       <a class="logo" href="#top">
-        <img class="logo-mark" src="./assets/engukuku-official-logo.png" alt="Engukuku">
+        <img class="logo-mark" src="./assets/engukuku-official-logo.webp" alt="Engukuku" width="588" height="525" loading="lazy" decoding="async">
       </a>
       <p>Dar es Salaam, Tanzania<br>© <span id="year"></span> Engukuku BioProtein</p>
       <a href="#contact">Start a conversation ↑</a>
@@ -1075,6 +1104,16 @@
       navLinks.classList.remove("open");
       menuToggle.setAttribute("aria-expanded", "false");
     }));
+
+    const lazyBackgrounds = document.querySelectorAll(".problem-visual, .mixer-visual, .poultry-story, .cta-panel");
+    const backgroundObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("bg-loaded");
+        backgroundObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "250px 0px" });
+    lazyBackgrounds.forEach(element => backgroundObserver.observe(element));
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
